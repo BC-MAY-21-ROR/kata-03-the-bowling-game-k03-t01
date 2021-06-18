@@ -1,4 +1,4 @@
-class Bonus 
+class Bonus
   def spare; end
 
   def strike
