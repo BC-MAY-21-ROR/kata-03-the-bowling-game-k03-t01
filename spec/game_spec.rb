@@ -3,18 +3,33 @@ require_relative '../src/game'
 describe Game do
   let(:easy_scenario) { '14,45,61,52,41,-1,72,61,51,236' }
   let(:base_scenario) { '14,45,6/,5/,x ,01,7/,6/,x ,2/6' }
-  let(:game) { Game.new(10) }
+  let(:easy_game) { Game.new(easy_scenario) }
 
   it 'exists' do
     expect(Game).to be_a Class
   end
 
-  xit 'returns a spare' do
+  it 'returns a spare' do
+    expect(easy_game.spare?('/')).to be_truthy
   end
 
-  xit 'returns a strike' do
+  it 'returns a strike' do
+    expect(easy_game.strike?(['X', ' '])).to be_truthy
   end
 
-  xit 'returns a open' do
+  it 'returns an open' do
+    expect(easy_game.open?('-')).to be_truthy
+  end
+
+  it 'returns an open frame' do
+    expect(easy_game.open_frame?(['4', '-'])).to be_truthy
+  end
+
+  context 'the are not bonus, just open frames' do
+    it 'returns 67 as final score' do
+      easy_game.fill_frames
+      easy_game.start
+      expect { easy_game.show_final_score }.to output("67\n").to_stdout
+    end
   end
 end
