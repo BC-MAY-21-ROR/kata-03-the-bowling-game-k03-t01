@@ -32,4 +32,10 @@ describe Game do
       expect { easy_game.show_final_score }.to output("67\n").to_stdout
     end
   end
+
+  it 'returns frames' do
+    expect(easy_game.split_frames(['14', '45', '61', '52', '41', '-1', '72', '61', '51',
+                                   '236'])).to eql([%w[1 4], %w[4 5], %w[6 1], %w[5 2], %w[4 1], %w[- 1], %w[7 2],
+                                                    %w[6 1], %w[5 1], %w[2 3 6]])
+  end
 end
