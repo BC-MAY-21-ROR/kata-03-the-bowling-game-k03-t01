@@ -1,3 +1,4 @@
+
 class Bonus
   def spare(_frames, _frame_index)
     next_try
