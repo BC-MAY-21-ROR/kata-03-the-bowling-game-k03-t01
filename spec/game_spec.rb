@@ -3,7 +3,10 @@ require_relative '../src/game'
 describe Game do
   let(:easy_scenario) { '14,45,61,52,41,-1,72,61,51,236' }
   let(:base_scenario) { '14,45,6/,5/,x ,01,7/,6/,x ,2/6' }
+  let(:strike_scenario) { 'x ,x ,x ,x ,x ,x ,x ,x ,x ,xxx' }
   let(:easy_game) { Game.new(easy_scenario) }
+  let(:base_game) { Game.new(base_scenario) }
+  let(:strike_game) { Game.new(strike_scenario) }
 
   it 'exists' do
     expect(Game).to be_a Class
@@ -14,7 +17,7 @@ describe Game do
   end
 
   it 'returns a strike' do
-    expect(easy_game.strike?(['X', ' '])).to be_truthy
+    expect(strike_game.strike?(['X', ' '])).to be_truthy
   end
 
   it 'returns an open' do
